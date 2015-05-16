@@ -16,6 +16,7 @@ public class SharedPreferencesUtil {
     public enum PrefKey {
         Setting("setting", 1),
         Account("account", 1),
+        Drawing("drawing", 1),
         ;
         public String name;
         public int version;

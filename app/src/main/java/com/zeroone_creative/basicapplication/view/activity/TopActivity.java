@@ -28,7 +28,7 @@ public class TopActivity extends Activity {
 
     void setPager() {
         mBasicPagerAdapter = new TopPagerAdapter(getFragmentManager());
-        mBasicPagerAdapter.addPages(TopPagerFragment_.builder().mSectionNumber(1).build());
+        mBasicPagerAdapter.addPages(TopPagerFragment_.builder().build());
         mViewPager.setAdapter(mBasicPagerAdapter);
     }
 

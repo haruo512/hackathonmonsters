@@ -1,6 +1,7 @@
 package com.zeroone_creative.basicapplication.model.system;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.zeroone_creative.basicapplication.controller.util.SharedPreferencesUtil;
 
@@ -18,6 +19,13 @@ public class UserAccount {
         this.password = password;
     }
 
+    public UserAccount(Context context) {
+        SharedPreferences preferences = SharedPreferencesUtil.getPreferences(context, SharedPreferencesUtil.PrefKey.Account);
+        id = preferences.getString("id", "");
+        username = preferences.getString("username", "");
+        password =  preferences.getString("password", "");
+    }
+
     public void saveUser(Context context) {
         SharedPreferencesUtil
                 .getPreferences(context, SharedPreferencesUtil.PrefKey.Account)
@@ -27,4 +35,7 @@ public class UserAccount {
                 .putString("password", password)
                 .commit();
     }
+
+
+
 }

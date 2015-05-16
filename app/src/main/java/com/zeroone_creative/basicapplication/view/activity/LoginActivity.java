@@ -4,9 +4,6 @@ import android.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
@@ -16,7 +13,6 @@ import com.zeroone_creative.basicapplication.R;
 import com.zeroone_creative.basicapplication.model.enumerate.LoginPage;
 import com.zeroone_creative.basicapplication.model.system.UserAccount;
 import com.zeroone_creative.basicapplication.view.LoginFragmentCallbackListener;
-import com.zeroone_creative.basicapplication.view.fragment.LoginNameFragment;
 import com.zeroone_creative.basicapplication.view.fragment.LoginNameFragment_;
 
 import org.androidannotations.annotations.AfterViews;
@@ -32,6 +28,14 @@ public class LoginActivity extends ActionBarActivity implements LoginFragmentCal
     @ViewById(R.id.login_swiperefreshlayout)
     SwipeRefreshLayout mProgressLayout;
     private String mNameData;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (ParseUser.getCurrentUser() != null) {
+            TopActivity_.intent(this).start();
+        }
+    }
 
     @AfterViews
     void onAfterViews() {
@@ -83,6 +87,10 @@ public class LoginActivity extends ActionBarActivity implements LoginFragmentCal
 
     }
 
+    /**
+     * サインアップ
+     * @param e
+     */
     @Override
     public void done(com.parse.ParseException e) {
         if (e == null) {
@@ -103,10 +111,15 @@ public class LoginActivity extends ActionBarActivity implements LoginFragmentCal
         }
     }
 
+    /**
+     * ログイン
+     * @param parseUser
+     * @param e
+     */
     @Override
     public void done(ParseUser parseUser, com.parse.ParseException e) {
         new UserAccount(parseUser.getObjectId(), parseUser.getUsername(), parseUser.getUsername()).saveUser(this);
-        PlayActivity_.intent(this).start();
+        TopActivity_.intent(this).start();
         finish();
     }
 }

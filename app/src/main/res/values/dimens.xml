@@ -15,35 +15,14 @@
     <!-- Common Page -->
     <dimen name="common_button_horizontal_margin">48dp</dimen>
     <dimen name="common_item_next_icon_width">16dp</dimen>
-    <!-- Login Page -->
-    <dimen name="login_page_vertical_margin">48dp</dimen>
-    <dimen name="login_button_vertical_margin">48dp</dimen>
-    <dimen name="login_imageview_bottom_margin">48dp</dimen>
-    <!-- Home Page -->
-    <dimen name="home_listview_divider_height">16dp</dimen>
-    <dimen name="home_item_imageview_icon_size">64dp</dimen>
-    <dimen name="home_item_imageview_icon_radius">8dp</dimen>
-    <!-- News Page -->
-    <dimen name="news_button_top_margin">24dp</dimen>
-    <dimen name="news_button_bottom_margin">48dp</dimen>
-    <dimen name="news_textview_left_margin">24dp</dimen>
-    <dimen name="news_item_image_size">96dp</dimen>
-    <dimen name="news_item_image_radius">8dp</dimen>
+    <!-- Top Page -->
+    <dimen name="top_textview_textsize">24sp</dimen>
+    <dimen name="top_button_height">96dp</dimen>
 
-    <!-- NewsContent Page -->
-    <dimen name="news_content_vertical_margin">24dp</dimen>
-    <dimen name="news_content_horizontal_margin">24dp</dimen>
-    <!-- Forum Common -->
-    <dimen name="forum_icon_size">64dp</dimen>
-    <dimen name="forum_mini_icon_size">16dp</dimen>
-    <!-- Forum Voice -->
-    <dimen name="forum_voice_caption_textview_top_margin">24dp</dimen>
-    <dimen name="forum_voice_item_icon_size">48dp</dimen>
-    <!-- Confilm Dialog -->
-    <dimen name="dialog_button_radius">4dp</dimen>
-    <dimen name="dialog_button_height">36dp</dimen>
-    <dimen name="dialog_horizontal_padding">24dp</dimen>
-    <dimen name="dialog_vertical_padding">24dp</dimen>
+
+    <!-- Play Page -->
+    <dimen name="play_footer_height">64dp</dimen>
+    <dimen name="play_footer_icon_size">56dp</dimen>
 
     <!-- TODO: /PageParams -->
 
@@ -72,6 +51,7 @@
     <!-- Layout Property -->
     <dimen name="card_corner_radius">8dp</dimen>
     <dimen name="card_elevation">2dp</dimen>
+    <dimen name="drawing_view_frame_width">2dp</dimen>
 
     <!-- Text Size -->
     <dimen name="text_size_xlarge">24sp</dimen>

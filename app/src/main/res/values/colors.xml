@@ -2,18 +2,18 @@
 <!-- App Color -->
 <resources>
     <!-- Primary -->
-    <color name="primary">#1181cf</color>
-    <color name="primary_dark">#38454c</color>
-    <color name="primary_light">#3ebcf6</color>
+    <color name="primary">#ffea00</color>
+    <color name="primary_dark">#ffa000</color>
+    <color name="primary_light">#ffea00</color>
     <!-- Primary Action Color -->
-    <color name="primary_button_normal">#3c7bda</color>
-    <color name="primary_action_disable">#883c7bda</color>
-    <color name="primary_action_pressed">#2b6ac9</color>
+    <color name="primary_button_normal">#ffea00</color>
+    <color name="primary_action_disable">#88ffea00</color>
+    <color name="primary_action_pressed">#eed900</color>
     <!-- Accent...secondary...thirdry -->
-    <color name="accent">#3ebbf6</color>
+    <color name="accent">#448aff</color>
     <!-- Accent Action Color -->
-    <color name="accent_action_disable">#883ebbf6</color>
-    <color name="accent_action_pressed">#2daae5</color>
+    <color name="accent_action_disable">#88448aff</color>
+    <color name="accent_action_pressed">#4379ee</color>
 
     <!-- Ghost Button Color -->
     <color name="ghost_normal">#ffffff</color>
@@ -36,5 +36,7 @@
     <!-- Page Params -->
     <!-- Login -->
     <color name="login_edittext_backgroundtint">#fff</color>
+    <!-- Play -->
+    <color name="play_footer_background">#8d8d8d</color>
 
 </resources>
