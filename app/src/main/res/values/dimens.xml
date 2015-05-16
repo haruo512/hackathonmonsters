@@ -57,6 +57,10 @@
     <dimen name="button_inset_action_hovered">1dp</dimen>
     <!-- Stroke -->
     <dimen name="button_stroke_width">2dp</dimen>
+    <!-- RoundButton Stroke Width -->
+    <dimen name="button_round_stroke_width">6dp</dimen>
+    <dimen name="button_round_stroke_width_pressed">4dp</dimen>
+    <dimen name="button_round_minsize">120dp</dimen>
     <!-- TODO: /Button -->
 
     <!-- EditText -->

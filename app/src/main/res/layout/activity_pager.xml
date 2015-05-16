@@ -4,4 +4,4 @@
     android:id="@+id/pager_viewpager"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.zeroone_creative.basicapplication.view.activity.PagerActivity" />
+    tools:context="com.zeroone_creative.basicapplication.view.activity.TopActivity" />

@@ -11,7 +11,7 @@ import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
 @EFragment(R.layout.fragment_pager)
-public class PagerFragment extends Fragment {
+public class TopPagerFragment extends Fragment {
 
     @FragmentArg("section_number")
     int mSectionNumber;

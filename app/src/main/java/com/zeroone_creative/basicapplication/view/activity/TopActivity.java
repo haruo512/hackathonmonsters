@@ -6,17 +6,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.zeroone_creative.basicapplication.R;
-import com.zeroone_creative.basicapplication.view.adapter.BasicPagerAdapter;
-import com.zeroone_creative.basicapplication.view.fragment.PagerFragment_;
+import com.zeroone_creative.basicapplication.view.adapter.TopPagerAdapter;
+import com.zeroone_creative.basicapplication.view.fragment.TopPagerFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.activity_pager)
-public class PagerActivity extends Activity {
+public class TopActivity extends Activity {
 
-    BasicPagerAdapter mBasicPagerAdapter;
+    TopPagerAdapter mBasicPagerAdapter;
 
     @ViewById(R.id.pager_viewpager)
     ViewPager mViewPager;
@@ -27,8 +27,8 @@ public class PagerActivity extends Activity {
     }
 
     void setPager() {
-        mBasicPagerAdapter = new BasicPagerAdapter(getFragmentManager());
-        mBasicPagerAdapter.addPages(PagerFragment_.builder().mSectionNumber(1).build());
+        mBasicPagerAdapter = new TopPagerAdapter(getFragmentManager());
+        mBasicPagerAdapter.addPages(TopPagerFragment_.builder().mSectionNumber(1).build());
         mViewPager.setAdapter(mBasicPagerAdapter);
     }
 

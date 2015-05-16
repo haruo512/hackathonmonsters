@@ -75,6 +75,7 @@
     </style>
 
     <style name="TextAppearance.Custom.Widget" />
+
     <style name="TextAppearance.Custom.Widget.Button" parent="@style/TextAppearance.Custom.Button" />
 
     <style name="TextAppearance.Custom.Widget.EditText">
@@ -92,5 +93,16 @@
         <item name="@android:background">@drawable/bg_button_primary</item>
         <item name="@android:textAppearance">?attr/android:textAppearanceButton</item>
     </style>
+
+    <!-- Widget -->
+    <style name="Widget.Custom.Button.Round" parent="@style/Widget.AppCompat.Light.ActionButton">
+        <item name="@android:background">@drawable/bg_ghost_round_button</item>
+        <item name="@android:textAppearance">?attr/android:textAppearanceButton</item>
+        <item name="android:minWidth">@dimen/button_round_minsize</item>
+        <item name="android:minHeight">@dimen/button_round_minsize</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primary_text_inverse</item>
+    </style>
+    s
 
 </resources>

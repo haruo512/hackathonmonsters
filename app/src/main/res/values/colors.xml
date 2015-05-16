@@ -36,20 +36,5 @@
     <!-- Page Params -->
     <!-- Login -->
     <color name="login_edittext_backgroundtint">#fff</color>
-    <!-- Home -->
-    <color name="home_menu_item_back">#ffffff</color>
-    <color name="home_menu_news">#29a456</color>
-    <color name="home_menu_analytics">#ec6355</color>
-    <color name="home_menu_preview">#4265ae</color>
-    <color name="home_menu_forum">#ef8f30</color>
-    <color name="home_menu_coupon">#b02521</color>
-    <color name="home_menu_functions">#422d54</color>
-    <!-- Dialog Button Color -->
-    <color name="dialog_ok_action_normal">#c30016</color>
-    <color name="dialog_ok_action_disable">#88c30016</color>
-    <color name="dialog_ok_action_pressed">#b20005</color>
-    <color name="dialog_cancel_action_normal">#898989</color>
-    <color name="dialog_cancel_action_disable">#88898989</color>
-    <color name="dialog_cancel_action_pressed">#787878</color>
 
 </resources>
