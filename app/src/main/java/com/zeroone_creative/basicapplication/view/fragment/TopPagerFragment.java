@@ -1,6 +1,7 @@
 package com.zeroone_creative.basicapplication.view.fragment;
 
 import android.app.Fragment;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
@@ -50,7 +51,8 @@ public class TopPagerFragment extends Fragment {
     @Click(R.id.top_button_start)
     public void clickStart() {
         if (mSententceList.size() > 0) {
-            PlayActivity_.intent(getActivity()).sentenceId(mSententceList.get(0).getId()).start();
+            Log.d("Sentence", mSententceList.get(0).toString());
+            PlayActivity_.intent(getActivity()).sentenceId(mSententceList.get(0).getObjectId()).start();
         }
     }
 

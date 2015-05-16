@@ -9,10 +9,6 @@ import com.parse.ParseObject;
 @ParseClassName("Sentence")
 public class SentenceParseObject extends ParseObject {
 
-    public String getId() {
-        return getString("id");
-    }
-
     public String getBody() {
         return getString("body");
     }

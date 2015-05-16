@@ -7,14 +7,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.zeroone_creative.basicapplication.R;
 import com.zeroone_creative.basicapplication.controller.util.ImageUtil;
 import com.zeroone_creative.basicapplication.controller.util.SharedPreferencesUtil;
 import com.zeroone_creative.basicapplication.model.parseobject.ImageParseObject;
+import com.zeroone_creative.basicapplication.model.parseobject.SentenceParseObject;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
@@ -61,6 +64,17 @@ public class ConfilmActivity extends ActionBarActivity implements SaveCallback {
             finish();
         }
         mConfilmImageView.setImageBitmap(mConfilmImage);
+
+        ParseQuery<SentenceParseObject> query = ParseQuery.getQuery("Sentence");
+        query.getInBackground(sentenceId, new GetCallback<SentenceParseObject>() {
+            public void done(SentenceParseObject object, ParseException e) {
+                if (e == null) {
+                    mQuestionTextView.setText(object.getBody());
+                } else {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @Click(R.id.confilm_imageview_center)
@@ -70,9 +84,13 @@ public class ConfilmActivity extends ActionBarActivity implements SaveCallback {
 
     @Override
     public void done(ParseException e) {
-        //TODO 他の人の投稿一覧にいくようにする
-        Intent intent = TopActivity_.intent(this).get();
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        if (e == null) {
+            //TODO 他の人の投稿一覧にいくようにする
+            Intent intent = TopActivity_.intent(this).get();
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else {
+            e.printStackTrace();
+        }
     }
 }

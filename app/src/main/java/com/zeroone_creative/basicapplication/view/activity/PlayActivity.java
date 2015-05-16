@@ -54,19 +54,13 @@ public class PlayActivity extends ActionBarActivity {
 
     @Extra("sentenceId")
     String sentenceId = "";
+
     private SentenceParseObject mSentenceParseObject;
-
-    @AfterInject
-    public void onAfterInject() {
-
-    }
-
 
     @AfterViews
     void onAfterViews() {
         mProgressLayout.setRefreshing(false);
         mProgressLayout.setEnabled(false);
-
         WindowManager windowManager = (WindowManager)getSystemService(WINDOW_SERVICE);
         // ディスプレイのインスタンス生成
         Point displaySize = new Point();
@@ -75,10 +69,6 @@ public class PlayActivity extends ActionBarActivity {
         layoutParams.width = Math.min(displaySize.x, displaySize.y);
         layoutParams.height = Math.min(displaySize.x, displaySize.y);
         mDrawingLayout.setLayoutParams(layoutParams);
-
-        mStampDrawingView.setFocusable(false);
-        mPenDrawingView.setFocusable(false);
-
         ParseQuery<SentenceParseObject> query = ParseQuery.getQuery("Sentence");
         query.getInBackground(sentenceId, new GetCallback<SentenceParseObject>() {
             public void done(SentenceParseObject object, ParseException e) {
@@ -91,6 +81,7 @@ public class PlayActivity extends ActionBarActivity {
             }
         });
 
+        clickPen();
         Picasso.with(getApplicationContext()).load("https://dl.dropboxusercontent.com/u/31455721/mother.jpg").into(mAddHintTarget);
     }
 
@@ -99,6 +90,35 @@ public class PlayActivity extends ActionBarActivity {
         super.onStop();
         if (mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(false);
     }
+
+    @Click(R.id.play_imagebutton_pen)
+    void clickPen() {
+        mStampDrawingView.removeFrame();
+        //フォーカスを変える
+        mStampDrawingView.setFocusable(false);
+        mPenDrawingView.setFocusable(true);
+
+    }
+
+    @Click(R.id.play_imagebutton_move)
+    void clickMove() {
+        //フォーカスを変える
+        mStampDrawingView.setFocusable(true);
+        mPenDrawingView.setFocusable(false);
+    }
+
+
+    @Click(R.id.play_imagebutton_color)
+    void clickColor() {
+        //TODO Color Select
+    }
+
+    @Click(R.id.play_imagebutton_width)
+    void clickWidth() {
+        //TODO Widht Select
+    }
+
+
 
     @Click(R.id.play_button_finish)
     void clickPreview() {
@@ -125,7 +145,7 @@ public class PlayActivity extends ActionBarActivity {
         SharedPreferences.Editor editor = SharedPreferencesUtil.getPreferences(getApplicationContext(), SharedPreferencesUtil.PrefKey.Drawing).edit();
         editor.putString("drawimage", ImageUtil.encodeImageBase64(bitmap));
         editor.commit();
-        ConfilmActivity_.intent(this).start();
+        ConfilmActivity_.intent(this).sentenceId(mSentenceParseObject.getObjectId()).start();
     }
 
     private Bitmap transformImage(Bitmap source) {
@@ -143,9 +163,9 @@ public class PlayActivity extends ActionBarActivity {
     private Target mAddHintTarget = new Target() {
         @Override
         public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-            mStampDrawingView.setFocusable(true);
             //画像を読み込み完了したので追加
             mStampDrawingView.addDecoItem(bitmap, Deco.DATA_TYPE_STAMP);
+            clickMove();
         }
         @Override
         public void onBitmapFailed(Drawable errorDrawable) {

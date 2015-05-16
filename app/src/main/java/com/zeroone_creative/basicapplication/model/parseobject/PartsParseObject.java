@@ -11,13 +11,6 @@ import java.util.List;
  */
 @ParseClassName("Parts")
 public class PartsParseObject extends ParseObject {
-    public String id;
-    public String url;
-    public List<String> tag = new ArrayList<>();
-
-    public String getId() {
-        return getString("id");
-    }
 
     public String getUrl() {
         return getString("url");

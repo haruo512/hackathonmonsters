@@ -9,10 +9,6 @@ import com.parse.ParseObject;
 @ParseClassName("Comment")
 public class CommentParseObject extends ParseObject {
 
-    public String getId() {
-        return getString("id");
-    }
-
     public String getBody() {
         return getString("body");
     }
