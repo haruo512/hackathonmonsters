@@ -23,7 +23,6 @@
     <string name="top_button_start">はじめる</string>
     <string name="top_button_gallery">これまでの絵</string>
     <string name="top_button_other">みんなの絵</string>
-
     <!-- Play -->
     <string name="play_toast_faild_stamp_get">画像を取得できなかったよ</string>
     <string name="play_nodraw_dialog_title">何もかかれていません</string>
@@ -31,6 +30,9 @@
     <!-- Confilm -->
     <string name="confilm_textview_finish">かんせい！</string>
     <string name="confilm_textview_question">テーマ：</string>
+    <string name="confilm_button_send">かいとうする</string>
+    <!-- Other Answer -->
+    <string name="other_answer_button_top">トップへ</string>
 
     <!-- Recycler -->
     <string name="action_change_recycler">Recycler</string>

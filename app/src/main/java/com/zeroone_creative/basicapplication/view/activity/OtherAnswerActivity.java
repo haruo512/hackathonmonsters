@@ -1,5 +1,6 @@
 package com.zeroone_creative.basicapplication.view.activity;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +17,9 @@ import com.zeroone_creative.basicapplication.model.parseobject.ImageParseObject;
 import com.zeroone_creative.basicapplication.view.adapter.AnswerAdapter;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
@@ -25,9 +28,10 @@ import java.util.List;
 @EActivity(R.layout.activity_other_answer)
 public class OtherAnswerActivity extends ActionBarActivity {
 
+    @Extra("sentenceId")
+    String sentenceId = "";
     @ViewById(R.id.other_answer_gridview)
     GridView mGridView;
-
     private AnswerAdapter mAnswerAdapter;
 
     @AfterViews
@@ -36,6 +40,7 @@ public class OtherAnswerActivity extends ActionBarActivity {
         mGridView.setAdapter(mAnswerAdapter);
 
         ParseQuery<ImageParseObject> query = ParseQuery.getQuery("Image");
+        query.whereContains("sentenceId", sentenceId);
         query.setLimit(30);
         query.findInBackground(new FindCallback<ImageParseObject>() {
             public void done(List<ImageParseObject> imageList, ParseException e) {
@@ -46,6 +51,13 @@ public class OtherAnswerActivity extends ActionBarActivity {
                 }
             }
         });
+    }
+
+    @Click(R.id.other_answer_button_send)
+    void clickSend() {
+        Intent intent = TopActivity_.intent(this).get();
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
 }

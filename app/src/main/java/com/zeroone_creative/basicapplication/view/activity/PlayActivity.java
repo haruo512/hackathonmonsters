@@ -5,13 +5,20 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +31,7 @@ import com.squareup.picasso.Target;
 import com.zeroone_creative.basicapplication.R;
 import com.zeroone_creative.basicapplication.controller.util.ImageUtil;
 import com.zeroone_creative.basicapplication.controller.util.SharedPreferencesUtil;
+import com.zeroone_creative.basicapplication.model.enumerate.PalleteColor;
 import com.zeroone_creative.basicapplication.model.parseobject.SentenceParseObject;
 import com.zeroone_creative.basicapplication.model.system.AppConfig;
 import com.zeroone_creative.basicapplication.model.viewobject.Deco;
@@ -38,9 +46,13 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
-@EActivity(R.layout.activity_play)
-public class PlayActivity extends ActionBarActivity {
+import java.util.Locale;
 
+@EActivity(R.layout.activity_play)
+public class PlayActivity extends ActionBarActivity implements TextToSpeech.OnInitListener {
+
+    @ViewById(R.id.play_layout_color_selector)
+    LinearLayout mColorSelectorLayout;
     @ViewById(R.id.play_layout_drawing)
     FrameLayout mDrawingLayout;
     @ViewById(R.id.play_pen_drawingview)
@@ -57,11 +69,23 @@ public class PlayActivity extends ActionBarActivity {
 
     private SentenceParseObject mSentenceParseObject;
 
+    private TextToSpeech mTextToSpeech;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mTextToSpeech = new TextToSpeech(this, this);
+    }
+
     @AfterViews
     void onAfterViews() {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        for (PalleteColor color : PalleteColor.values()) {
+            mColorSelectorLayout.addView(getColorItemImageView(inflater, color));
+        }
         mProgressLayout.setRefreshing(false);
         mProgressLayout.setEnabled(false);
-        WindowManager windowManager = (WindowManager)getSystemService(WINDOW_SERVICE);
+        WindowManager windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         // ディスプレイのインスタンス生成
         Point displaySize = new Point();
         windowManager.getDefaultDisplay().getSize(displaySize);
@@ -80,9 +104,15 @@ public class PlayActivity extends ActionBarActivity {
                 }
             }
         });
-
         clickPen();
+
         Picasso.with(getApplicationContext()).load("https://dl.dropboxusercontent.com/u/31455721/mother.jpg").into(mAddHintTarget);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mDrawingLayout.setBackgroundResource(R.drawable.bg_drawing);
     }
 
     @Override
@@ -91,13 +121,22 @@ public class PlayActivity extends ActionBarActivity {
         if (mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(false);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mTextToSpeech != null) {
+            // TextToSpeechのリソースを解放する
+            mTextToSpeech.shutdown();
+        }
+    }
+
     @Click(R.id.play_imagebutton_pen)
     void clickPen() {
         mStampDrawingView.removeFrame();
         //フォーカスを変える
         mStampDrawingView.setFocusable(false);
         mPenDrawingView.setFocusable(true);
-
+        mPenDrawingView.setPenPaint();
     }
 
     @Click(R.id.play_imagebutton_move)
@@ -107,41 +146,22 @@ public class PlayActivity extends ActionBarActivity {
         mPenDrawingView.setFocusable(false);
     }
 
-
-    @Click(R.id.play_imagebutton_color)
-    void clickColor() {
-        //TODO Color Select
+    @Click(R.id.play_imagebutton_eraser)
+    void clickEraser() {
+        clickPen();
+        mPenDrawingView.setEraserPaint();
     }
-
-    @Click(R.id.play_imagebutton_width)
-    void clickWidth() {
-        //TODO Widht Select
-    }
-
-
 
     @Click(R.id.play_button_finish)
     void clickPreview() {
-       /*
-        if (mStampDrawingView.getDecosCount() < 1) {
-            if (getFragmentManager().findFragmentByTag(MessageDialogFragment.class.getSimpleName()) == null) {
-                MessageDialogFragment messageDialogFragment = MessageDialogFragment.newInstance(getString(R.string.make_attention_title), getString(R.string.make_attention_message));
-                messageDialogFragment.show(getFragmentManager(), MessageDialogFragment.class.getSimpleName());
-            }
-            //キャンセル
-            return;
-        }
-        */
         if (!mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(true);
-
         mStampDrawingView.removeFrame();
         //背景を白く設定
-        mStampDrawingView.setBackgroundColor(Color.WHITE);
-        mPenDrawingView.setBackgroundColor(Color.TRANSPARENT);
+        mDrawingLayout.setBackgroundColor(Color.WHITE);
         mDrawingLayout.setDrawingCacheEnabled(false);
         mDrawingLayout.setDrawingCacheEnabled(true);
         Bitmap bitmap = transformImage(Bitmap.createBitmap(mDrawingLayout.getDrawingCache()));
-        bitmap = ImageUtil.resize(bitmap, 600, 600);
+        bitmap = ImageUtil.resize(bitmap, 500, 500);
         SharedPreferences.Editor editor = SharedPreferencesUtil.getPreferences(getApplicationContext(), SharedPreferencesUtil.PrefKey.Drawing).edit();
         editor.putString("drawimage", ImageUtil.encodeImageBase64(bitmap));
         editor.commit();
@@ -167,14 +187,67 @@ public class PlayActivity extends ActionBarActivity {
             mStampDrawingView.addDecoItem(bitmap, Deco.DATA_TYPE_STAMP);
             clickMove();
         }
+
         @Override
         public void onBitmapFailed(Drawable errorDrawable) {
             Toast.makeText(getApplicationContext(), getString(R.string.play_toast_faild_stamp_get), Toast.LENGTH_LONG).show();
         }
+
         @Override
         public void onPrepareLoad(Drawable placeHolderDrawable) {
         }
     };
 
+    private ImageView getColorItemImageView(LayoutInflater inflater, PalleteColor color) {
+        ImageView imageView = (ImageView) inflater.inflate(R.layout.item_color, null);
+        imageView.setImageDrawable(PalleteColor.getGradientDrawable(color, getResources()));
+        imageView.setTag(color);
+        imageView.setOnClickListener(colorImageClickListener);
+        imageView.setEnabled(true);
+        return imageView;
+    }
+
+    private View.OnClickListener colorImageClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Object object = v.getTag();
+            if (object instanceof PalleteColor) {
+                int color = Color.parseColor(((PalleteColor) object).colorCode);
+                mPenDrawingView.setPenColor(color);
+                clickPen();
+                for (int i = 0; i < mColorSelectorLayout.getChildCount(); i++) {
+                    mColorSelectorLayout.getChildAt(i).setEnabled(true);
+                }
+                v.setEnabled(false);
+            }
+        }
+    };
+
+    @Click(R.id.play_button_speak)
+    void speechText() {
+        if (mSentenceParseObject != null && mSentenceParseObject.getBody().length() > 0) {
+            if (mTextToSpeech.isSpeaking()) {
+                // 読み上げ中なら止める
+                mTextToSpeech.stop();
+            }
+            Log.d(PlayActivity.class.getSimpleName(), "Speach Text" + mSentenceParseObject.getBody());
+            // 読み上げ開始
+            mTextToSpeech.speak(mSentenceParseObject.getBody(), TextToSpeech.QUEUE_FLUSH, null);
+        }
+    }
+
+    @Override
+    public void onInit(int status) {
+        if (TextToSpeech.SUCCESS == status) {
+            Locale locale = Locale.ENGLISH;
+            if (mTextToSpeech.isLanguageAvailable(locale) >= TextToSpeech.LANG_AVAILABLE) {
+                mTextToSpeech.setLanguage(locale);
+            } else {
+                Log.d(PlayActivity.class.getSimpleName(), "Error SetLocale");
+            }
+        } else {
+            Log.d(PlayActivity.class.getSimpleName(), "Error Init");
+        }
+    }
 }
 

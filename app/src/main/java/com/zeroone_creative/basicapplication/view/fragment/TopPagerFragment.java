@@ -18,13 +18,14 @@ import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @EFragment(R.layout.fragment_pager_top)
 public class TopPagerFragment extends Fragment {
 
     @FragmentArg("langage_code")
-    String mLangageCode = "";
+    String mLangageCode = "en";
     @FragmentArg("langage_name")
     String mLangageName = "";
 
@@ -37,6 +38,9 @@ public class TopPagerFragment extends Fragment {
     public void onAfterViews() {
         mLangNameTextView.setText(mLangageName);
         ParseQuery<SentenceParseObject> query = ParseQuery.getQuery("Sentence");
+        query.whereContains("lang", mLangageCode);
+        //TODO　変えるかも
+        query.setLimit(10);
         query.findInBackground(new FindCallback<SentenceParseObject>() {
             public void done(List<SentenceParseObject> sententceList, ParseException e) {
                 if (e == null) {
@@ -52,6 +56,7 @@ public class TopPagerFragment extends Fragment {
     public void clickStart() {
         if (mSententceList.size() > 0) {
             Log.d("Sentence", mSententceList.get(0).toString());
+            Collections.shuffle(mSententceList);
             PlayActivity_.intent(getActivity()).sentenceId(mSententceList.get(0).getObjectId()).start();
         }
     }

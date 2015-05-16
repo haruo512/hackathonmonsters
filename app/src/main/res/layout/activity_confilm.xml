@@ -10,11 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.zeroone_creative.basicapplication.view.activity.ConfilmActivity">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
-
     <TextView
         android:id="@+id/confilm_textview_finish"
         android:layout_width="wrap_content"
@@ -22,24 +17,8 @@
         android:text="@string/confilm_textview_finish"
         style="@style/TextAppearance.Custom.Large.Inverse"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/accent" />
-
-    <ImageView
-        android:id="@+id/confilm_imageview_center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/element_spacing_large"
-        android:layout_marginRight="@dimen/element_spacing_large"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter" />
-
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:textColor="@color/accent"
+        android:layout_marginTop="@dimen/activity_vertical_margin" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -59,10 +38,32 @@
             android:id="@+id/confilm_textview_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/confilm_textview_question"
             style="@style/TextAppearance.Custom.Large.Inverse" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/confilm_imageview_center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/confilm_imageview_horizontal_margin"
+        android:layout_marginRight="@dimen/confilm_imageview_horizontal_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/confilm_imageview_vertical_margin"
+        android:layout_marginBottom="@dimen/confilm_imageview_vertical_margin" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confilm_button_send"
+        android:id="@+id/confilm_button_send"
+        android:singleLine="false"
+        style="@style/Widget.Custom.Button.Round"
+        android:layout_gravity="center_horizontal" />
 
 
 </LinearLayout>

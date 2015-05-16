@@ -9,10 +9,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.zeroone_creative.basicapplication.R;
 
 /**
  * Created by shunhosaka on 15/05/16.
@@ -24,6 +27,7 @@ public class PenDrawingView extends ImageView {
     private Path mPath;
     private Bitmap mBitmap;
     private float x1, y1;
+    private int mPenColor = Color.BLACK;
 
     public PenDrawingView(Context context) {
         super(context);
@@ -50,15 +54,16 @@ public class PenDrawingView extends ImageView {
         mPaint = new Paint();
         //グラフィックのスタイルを設定
         mPaint.setStyle(Paint.Style.STROKE);
-        //線の幅を設定
-        mPaint.setStrokeWidth(5.0f);
         //線と線のつなぎ目を丸く設定
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         //線の端を丸くC設定
         mPaint.setStrokeCap(Paint.Cap.ROUND);
+        setPenPaint();
         //Pathのインスタンスを生成
         mPath = new Path();
     }
+
+
 
     private void createdInitialize() {
         if (mBitmap == null) {
@@ -106,11 +111,22 @@ public class PenDrawingView extends ImageView {
     }
 
     public void setPenColor(int color) {
-        mPaint.setColor(color);
+        mPenColor = color;
+        setPenPaint();
     }
 
-    public void setStrokeWidth(float strokeWidth) {
-        mPaint.setStrokeWidth(strokeWidth);
+    public void setPenPaint() {
+        //線の幅を設定
+        mPaint.setStrokeWidth(getResources().getDimension(R.dimen.play_drawing_pen_width));
+        mPaint.setColor(mPenColor);
+        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
+    }
+
+    public void setEraserPaint() {
+        mPenColor = mPaint.getColor();
+        //TODO
+        mPaint.setColor(Color.TRANSPARENT);
+        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
     }
 
 }

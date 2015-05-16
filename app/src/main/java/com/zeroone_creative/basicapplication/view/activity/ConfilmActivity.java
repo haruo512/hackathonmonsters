@@ -3,6 +3,7 @@ package com.zeroone_creative.basicapplication.view.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -64,7 +65,6 @@ public class ConfilmActivity extends ActionBarActivity implements SaveCallback {
             finish();
         }
         mConfilmImageView.setImageBitmap(mConfilmImage);
-
         ParseQuery<SentenceParseObject> query = ParseQuery.getQuery("Sentence");
         query.getInBackground(sentenceId, new GetCallback<SentenceParseObject>() {
             public void done(SentenceParseObject object, ParseException e) {
@@ -77,16 +77,17 @@ public class ConfilmActivity extends ActionBarActivity implements SaveCallback {
         });
     }
 
-    @Click(R.id.confilm_imageview_center)
+    @Click(R.id.confilm_button_send)
     public void clickFinish() {
         mImageParseObject.saveInBackground(this);
     }
 
     @Override
     public void done(ParseException e) {
+        Log.d(ConfilmActivity.class.getSimpleName(), "Send Test");
         if (e == null) {
             //TODO 他の人の投稿一覧にいくようにする
-            Intent intent = TopActivity_.intent(this).get();
+            Intent intent = OtherAnswerActivity_.intent(this).sentenceId(mImageParseObject.getSentenceId()).get();
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         } else {

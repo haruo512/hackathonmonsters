@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.zeroone_creative.basicapplication.R;
+import com.zeroone_creative.basicapplication.model.enumerate.Language;
 import com.zeroone_creative.basicapplication.view.adapter.TopPagerAdapter;
 import com.zeroone_creative.basicapplication.view.fragment.TopPagerFragment_;
 
@@ -16,7 +17,7 @@ import org.androidannotations.annotations.ViewById;
 @EActivity(R.layout.activity_pager)
 public class TopActivity extends Activity {
 
-    TopPagerAdapter mBasicPagerAdapter;
+    TopPagerAdapter mPagerAdapter;
 
     @ViewById(R.id.pager_viewpager)
     ViewPager mViewPager;
@@ -27,9 +28,9 @@ public class TopActivity extends Activity {
     }
 
     void setPager() {
-        mBasicPagerAdapter = new TopPagerAdapter(getFragmentManager());
-        mBasicPagerAdapter.addPages(TopPagerFragment_.builder().build());
-        mViewPager.setAdapter(mBasicPagerAdapter);
+        mPagerAdapter = new TopPagerAdapter(getFragmentManager());
+        mPagerAdapter.addPages(TopPagerFragment_.builder().mLangageCode(Language.English.code).mLangageName(Language.English.name).build());
+        mViewPager.setAdapter(mPagerAdapter);
     }
 
     @Override

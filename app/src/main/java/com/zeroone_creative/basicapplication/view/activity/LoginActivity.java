@@ -34,6 +34,7 @@ public class LoginActivity extends ActionBarActivity implements LoginFragmentCal
         super.onCreate(savedInstanceState);
         if (ParseUser.getCurrentUser() != null) {
             TopActivity_.intent(this).start();
+            finish();
         }
     }
 
