@@ -14,7 +14,8 @@ public class SharedPreferencesUtil {
     private Object lock = new Object();
 
     public enum PrefKey {
-        Setting("setting", 1)
+        Setting("setting", 1),
+        Account("account", 1),
         ;
         public String name;
         public int version;

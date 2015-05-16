@@ -10,7 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.zeroone_creative.basicapplication.view.activity.LoginActivity">
 
-
     <TextView
         android:id="@+id/login_textview_nickname"
         android:layout_width="wrap_content"
@@ -30,7 +29,6 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/element_spacing_normal"
         android:backgroundTint="@color/login_edittext_backgroundtint"
-        android:focusable="false"
         android:textColor="@color/primary_text_inverse" />
 
     <Button

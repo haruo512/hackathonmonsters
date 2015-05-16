@@ -8,7 +8,7 @@ import com.zeroone_creative.basicapplication.model.system.AppConfig;
 /**
  * Created by shunhosaka on 15/05/16.
  */
-public class LangagExpress extends Application {
+public class LangagExpressApplication extends Application {
 
     @Override
     public void onCreate() {

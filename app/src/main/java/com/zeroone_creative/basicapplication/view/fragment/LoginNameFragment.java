@@ -8,11 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.zeroone_creative.basicapplication.R;
 import com.zeroone_creative.basicapplication.model.enumerate.LoginPage;
 import com.zeroone_creative.basicapplication.view.LoginFragmentCallbackListener;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
@@ -25,9 +27,9 @@ public class LoginNameFragment extends Fragment {
     @ViewById(R.id.login_edittext_name)
     EditText mNameEditText;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_login_name, container, false);
+    @AfterViews
+    public void onAfterViews() {
+
     }
 
     @Override
@@ -47,7 +49,15 @@ public class LoginNameFragment extends Fragment {
     @Click(R.id.login_button_next)
     public void clickNext() {
         if (mListener != null) {
-            mListener.onNextStepListener(mNameEditText.getText().toString(), LoginPage.NickName);
+            // 文字が空
+            if (mNameEditText.getText().toString().isEmpty()) {
+                MessageDialogFragment
+                        .newInstance(getString(R.string.login_name_faild_dialog_title), getString(R.string.login_name_faild_dialog_message))
+                        .show(getFragmentManager(), MessageDialogFragment.class.getSimpleName());
+            } else {
+                mListener.onNextStepListener(mNameEditText.getText().toString(), LoginPage.NickName);
+            }
+
         }
     }
 
