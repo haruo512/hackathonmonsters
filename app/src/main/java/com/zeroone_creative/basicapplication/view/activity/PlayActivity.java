@@ -1,5 +1,7 @@
 package com.zeroone_creative.basicapplication.view.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -9,7 +11,9 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +35,7 @@ import com.squareup.picasso.Target;
 import com.zeroone_creative.basicapplication.R;
 import com.zeroone_creative.basicapplication.controller.util.ImageUtil;
 import com.zeroone_creative.basicapplication.controller.util.SharedPreferencesUtil;
+import com.zeroone_creative.basicapplication.model.enumerate.Language;
 import com.zeroone_creative.basicapplication.model.enumerate.PalleteColor;
 import com.zeroone_creative.basicapplication.model.parseobject.SentenceParseObject;
 import com.zeroone_creative.basicapplication.model.system.AppConfig;
@@ -38,6 +43,7 @@ import com.zeroone_creative.basicapplication.model.viewobject.Deco;
 import com.zeroone_creative.basicapplication.view.fragment.MessageDialogFragment;
 import com.zeroone_creative.basicapplication.view.widget.PenDrawingView;
 import com.zeroone_creative.basicapplication.view.widget.StampDrawingView;
+import com.zeroone_creative.basicapplication.view.widget.TextLinker;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
@@ -50,6 +56,11 @@ import java.util.Locale;
 
 @EActivity(R.layout.activity_play)
 public class PlayActivity extends ActionBarActivity implements TextToSpeech.OnInitListener {
+
+    private final static int PART_LIST_RESULT_CODE = 100;
+
+    @Extra("sentenceId")
+    String sentenceId = "";
 
     @ViewById(R.id.play_layout_color_selector)
     LinearLayout mColorSelectorLayout;
@@ -64,17 +75,15 @@ public class PlayActivity extends ActionBarActivity implements TextToSpeech.OnIn
     @ViewById(R.id.play_swiperefreshlayout)
     SwipeRefreshLayout mProgressLayout;
 
-    @Extra("sentenceId")
-    String sentenceId = "";
-
     private SentenceParseObject mSentenceParseObject;
-
     private TextToSpeech mTextToSpeech;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mTextToSpeech = new TextToSpeech(this, this);
+        mContext = this;
     }
 
     @AfterViews
@@ -98,15 +107,13 @@ public class PlayActivity extends ActionBarActivity implements TextToSpeech.OnIn
             public void done(SentenceParseObject object, ParseException e) {
                 if (e == null) {
                     mSentenceParseObject = object;
-                    mQuestionTextView.setText(mSentenceParseObject.getBody());
+                    setQuestion();
                 } else {
                     e.printStackTrace();
                 }
             }
         });
         clickPen();
-
-        Picasso.with(getApplicationContext()).load("https://dl.dropboxusercontent.com/u/31455721/mother.jpg").into(mAddHintTarget);
     }
 
     @Override
@@ -127,6 +134,14 @@ public class PlayActivity extends ActionBarActivity implements TextToSpeech.OnIn
         if (mTextToSpeech != null) {
             // TextToSpeechのリソースを解放する
             mTextToSpeech.shutdown();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PART_LIST_RESULT_CODE && resultCode == RESULT_OK) {
+            Picasso.with(getApplicationContext()).load(data.getStringExtra("url")).into(mAddHintTarget);
         }
     }
 
@@ -167,6 +182,31 @@ public class PlayActivity extends ActionBarActivity implements TextToSpeech.OnIn
         editor.commit();
         ConfilmActivity_.intent(this).sentenceId(mSentenceParseObject.getObjectId()).start();
     }
+
+    private void setQuestion() {
+        if (mSentenceParseObject == null) return;
+        String text = mSentenceParseObject.getBody();
+
+        if (mSentenceParseObject.getLang().equals(Language.English.code)) {
+            String[] words = text.split(" ", 0);
+            SparseArray<String> links = new SparseArray<>();
+            for (int i = 0; i < words.length; i++) {
+                links.append(i, words[i]);
+            }
+            mQuestionTextView.setText(
+                    TextLinker.getLinkableText(text, links, new TextLinker.OnLinkClickListener() {
+                        @Override
+                        public void onLinkClick(int textId, String text) {
+                            //TODO パーツの選択に飛ばす
+                            //Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
+                            PartsListActivity_.intent(mContext).tagName(text).startForResult(PART_LIST_RESULT_CODE);
+                        }
+                    })
+            );
+            mQuestionTextView.setMovementMethod(LinkMovementMethod.getInstance());
+        }
+    }
+
 
     private Bitmap transformImage(Bitmap source) {
         int size = (int) (Math.min(source.getWidth(), source.getHeight()) * 27.0f / 32.0f);

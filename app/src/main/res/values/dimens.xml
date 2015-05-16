@@ -10,6 +10,7 @@
     <dimen name="view_height_small">36dp</dimen>
     <dimen name="view_height_tiny">24dp</dimen>
     <dimen name="list_item_divider_height">1dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
 
     <!-- TODO: PageParams -->
     <!-- Common Page -->
@@ -19,6 +20,8 @@
     <dimen name="top_textview_textsize">24sp</dimen>
     <dimen name="top_button_height">96dp</dimen>
     <!-- Play Page -->
+    <dimen name="play_header_question_minheight">64dp</dimen>
+    <dimen name="play_header_icon_size">64dp</dimen>
     <dimen name="play_footer_height">64dp</dimen>
     <dimen name="play_footer_icon_size">56dp</dimen>
     <dimen name="play_footer_color_selector_height">56dp</dimen>

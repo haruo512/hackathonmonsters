@@ -86,10 +86,12 @@ public class ConfilmActivity extends ActionBarActivity implements SaveCallback {
     public void done(ParseException e) {
         Log.d(ConfilmActivity.class.getSimpleName(), "Send Test");
         if (e == null) {
-            //TODO 他の人の投稿一覧にいくようにする
-            Intent intent = OtherAnswerActivity_.intent(this).sentenceId(mImageParseObject.getSentenceId()).get();
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            AnswerListActivity_
+                    .intent(this)
+                    .sentenceId(mImageParseObject.getSentenceId())
+                    .pageType(AnswerListActivity.PAGE_SENTENCE)
+                    .flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    .start();
         } else {
             e.printStackTrace();
         }

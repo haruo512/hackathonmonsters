@@ -45,14 +45,14 @@
 
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/top_button_gallery"
             android:layout_width="0dp"
             android:layout_height="@dimen/top_button_height"
             android:layout_weight="1"
             android:text="@string/top_button_gallery" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/top_button_all"
             android:layout_width="0dp"
             android:layout_height="@dimen/top_button_height"
             android:layout_weight="1"

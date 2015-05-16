@@ -1,6 +1,7 @@
 package com.zeroone_creative.basicapplication.view.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -9,6 +10,8 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.zeroone_creative.basicapplication.R;
 import com.zeroone_creative.basicapplication.model.parseobject.SentenceParseObject;
+import com.zeroone_creative.basicapplication.view.activity.AnswerListActivity;
+import com.zeroone_creative.basicapplication.view.activity.AnswerListActivity_;
 import com.zeroone_creative.basicapplication.view.activity.PlayActivity_;
 
 import org.androidannotations.annotations.AfterViews;
@@ -59,6 +62,22 @@ public class TopPagerFragment extends Fragment {
             Collections.shuffle(mSententceList);
             PlayActivity_.intent(getActivity()).sentenceId(mSententceList.get(0).getObjectId()).start();
         }
+    }
+
+    @Click(R.id.top_button_gallery)
+    public void clickGallery() {
+        AnswerListActivity_
+                .intent(this)
+                .pageType(AnswerListActivity.PAGE_GALLERY)
+                .start();
+    }
+
+    @Click(R.id.top_button_all)
+    public void clickAllImage() {
+        AnswerListActivity_
+                .intent(this)
+                .pageType(AnswerListActivity.PAGE_ALL)
+                .start();
     }
 
 }

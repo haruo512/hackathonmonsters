@@ -17,7 +17,7 @@ public class SentenceParseObject extends ParseObject {
         return getInt("level");
     }
 
-    public String getString() {
+    public String getLang() {
         return getString("lang");
     }
 

@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
 import com.zeroone_creative.basicapplication.R;
 import com.zeroone_creative.basicapplication.controller.util.ImageUtil;
 import com.zeroone_creative.basicapplication.model.parseobject.ImageParseObject;
+import com.zeroone_creative.basicapplication.model.parseobject.PartsParseObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +19,15 @@ import java.util.List;
 /**
  * Created by shunhosaka on 2014/12/04.
  */
-public class AnswerAdapter extends BaseAdapter {
+public class PartsAdapter extends BaseAdapter {
 
-    private List<ImageParseObject> mContent = new ArrayList<>();
+    private List<PartsParseObject> mContent = new ArrayList<>();
     private LayoutInflater mInflater;
+    private Context mContext;
 
-    public AnswerAdapter(Context context) {
+    public PartsAdapter(Context context) {
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mContext = context;
     }
 
     @Override
@@ -51,13 +55,13 @@ public class AnswerAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        ImageParseObject parseObject = (ImageParseObject) getItem(position);
-        holder.imageView.setImageBitmap(ImageUtil.decodeImageBase64(parseObject.getBody()));
+        PartsParseObject parseObject = (PartsParseObject) getItem(position);
+        Picasso.with(mContext).load(parseObject.getUrl()).into(holder.imageView);
         return convertView;
     }
 
-    public void setContent(List<ImageParseObject> imageParseObjectList) {
-        this.mContent = imageParseObjectList;
+    public void setContent(List<PartsParseObject> partsParseObjectList) {
+        this.mContent = partsParseObjectList;
         notifyDataSetChanged();
     }
 

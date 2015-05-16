@@ -28,8 +28,12 @@
             android:label="@string/title_activity_confilm" >
         </activity>
         <activity
-            android:name=".view.activity.OtherAnswerActivity_"
+            android:name=".view.activity.AnswerListActivity_"
             android:label="@string/title_activity_other_answer" >
+        </activity>
+        <activity
+            android:name=".view.activity.PartsListActivity_"
+            android:label="@string/title_activity_parts_list" >
         </activity>
     </application>
 
