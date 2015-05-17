@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name-->
+    <string name="app_name">LangSketch</string>
+    <!-- Page Titles (title_(class name)_(page name))-->
+    <string name="title_activity_login">Welcome!</string>
+    <string name="title_activity_login_name">Your name</string>
+    <string name="title_activity_parts_list">Select hint</string>
+    <string name="title_activity_other_answer">Other answeres</string>
+    <string name="title_activity_gallery_all">Gallery</string>
+    <string name="title_activity_history">History</string>
+    <string name="title_activity_commnet">English</string>
+    <string name="title_activity_comment_answer">Answer</string>
+    <string name="title_activity_pager">PagerActivity</string>
+    <string name="title_activity_confilm">Confirm</string>
+    
+    <!-- PageParams -->
+    <!-- Common -->
+    <!-- Login -->
+    <string name="login_textview_nickname">Nickname</string>
+    <string name="login_textview_age">Nickname</string>
+    <string name="login_textview_country">Country</string>
+    <string name="login_failed">Login failed</string>
+    <string name="login_button_start">Start</string>
+    <string name="login_button_next">Next</string>
+    <string name="login_name_faild_dialog_title">Is not entered</string>
+    <string name="login_name_faild_dialog_message">It must be at least 1 character.</string>
+    <string name="signup_faild_dialog_title">User ID </string>
+    <string name="signup_faild_dialog_message">This username is already taken!</string>
+    <!-- Top -->
+    <string name="top_button_start">Start</string>
+    <string name="top_button_gallery">Gallery</string>
+    <string name="top_button_other">Other Ansewres</string>
+    <!-- Play -->
+    <string name="play_toast_faild_stamp_get">Doesn’t look like a stamp</string>
+    <string name="play_nodraw_dialog_title">Blank</string>
+    <string name="play_nodraw_dialog_message">It must be at least 1 character!</string>
+    <!-- Confilm -->
+    <string name="confilm_textview_finish">Finish！</string>
+    <string name="confilm_textview_question">Theme：</string>
+    <string name="confilm_button_send">Answer</string>
+    <!-- Other Answer -->
+    <string name="other_answer_button_top">Top</string>
+    <string name="other_answer_textview_question">Theme</string>
+    <!-- PartsList -->
+    <string name="parts_list_textview_notfound">Hint is not found, change other word.</string>
+    <!-- Comment -->
+    <string name="comment_button_ok">OK</string>
+    <string name="comment_edittext_hint">Please tap</string>
+    <!-- Comment Answer -->
+    <string name="comment_answer_textview_orizinal">Original text</string>
+    <string name="comment_answer_textview_answer">Your answer</string>
+    <!-- RemindLater -->
+    <string name="remind_later_title">What is it?</string>
+    <string name="remind_later_message">Please explanation is english.</string>
+    <!-- Dialog Fragment -->
+    <string name="dialog_positive_button">OK</string>
+    <string name="dialog_negative_button">Cansel</string>
+    
+</resources>
