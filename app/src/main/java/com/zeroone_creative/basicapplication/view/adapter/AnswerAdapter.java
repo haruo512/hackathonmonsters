@@ -32,7 +32,7 @@ public class AnswerAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public ImageParseObject getItem(int position) {
         return mContent.get(position);
     }
 

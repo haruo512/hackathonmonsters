@@ -2,30 +2,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.zeroone_creative.basicapplication.view.activity.AnswerListActivity">
+
+    <include
+        layout="@layout/header_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <GridView
         android:id="@+id/other_answer_gridview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:numColumns="2" />
+        android:numColumns="3"
+        android:paddingBottom="@dimen/element_spacing_normal"
+        android:paddingLeft="@dimen/element_spacing_normal"
+        android:paddingRight="@dimen/element_spacing_normal"
+        android:paddingTop="@dimen/element_spacing_normal"
 
-    <Button
-        android:id="@+id/other_answer_button_send"
-        style="@style/Widget.Custom.Button.Round"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:singleLine="false"
-        android:text="@string/other_answer_button_top" />
+        android:stretchMode="columnWidth"
+        android:horizontalSpacing="@dimen/element_spacing_small"
+        android:verticalSpacing="@dimen/element_spacing_small" />
+
+    <LinearLayout
+        android:id="@+id/other_answer_layout_question"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/other_answer_textview_question"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/accent"
+            android:textSize="@dimen/headline_textview_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/other_answer_textview_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:textStyle="normal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="@dimen/headline_textview_size" />
+
+        <Button
+            android:id="@+id/other_answer_button_ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/element_spacing_large"
+            android:text="@string/other_answer_button_top"
+            style="@style/Widget.Custom.Button.Large" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

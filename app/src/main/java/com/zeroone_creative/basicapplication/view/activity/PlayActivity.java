@@ -99,8 +99,9 @@ public class PlayActivity extends ActionBarActivity implements TextToSpeech.OnIn
         Point displaySize = new Point();
         windowManager.getDefaultDisplay().getSize(displaySize);
         ViewGroup.LayoutParams layoutParams = mDrawingLayout.getLayoutParams();
-        layoutParams.width = Math.min(displaySize.x, displaySize.y);
-        layoutParams.height = Math.min(displaySize.x, displaySize.y);
+        int size = (int) (Math.min(displaySize.x, displaySize.y) * 0.9);
+        layoutParams.width = size;
+        layoutParams.height = size;
         mDrawingLayout.setLayoutParams(layoutParams);
         ParseQuery<SentenceParseObject> query = ParseQuery.getQuery("Sentence");
         query.getInBackground(sentenceId, new GetCallback<SentenceParseObject>() {
@@ -165,6 +166,13 @@ public class PlayActivity extends ActionBarActivity implements TextToSpeech.OnIn
     void clickEraser() {
         clickPen();
         mPenDrawingView.setEraserPaint();
+    }
+
+    @Click(R.id.play_imagebutton_trash)
+    void clickTrash() {
+        mPenDrawingView.clearCanvas();
+        mStampDrawingView.clearCanvas();
+        clickPen();
     }
 
     @Click(R.id.play_button_finish)

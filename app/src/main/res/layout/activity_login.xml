@@ -6,14 +6,25 @@
     android:layout_height="match_parent"
     class="android.support.v4.widget.SwipeRefreshLayout">
 
-    <FrameLayout
-        android:id="@+id/login_container_layout"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="com.zeroone_creative.basicapplication.view.activity.LoginActivity">
+        android:layout_gravity="left|top">
 
-    </FrameLayout>
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/header_toolbar" />
+
+        <FrameLayout
+            android:id="@+id/login_container_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context="com.zeroone_creative.basicapplication.view.activity.LoginActivity"/>
+
+    </LinearLayout>
 
 </view>
 

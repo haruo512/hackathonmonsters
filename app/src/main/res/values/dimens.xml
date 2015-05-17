@@ -1,7 +1,7 @@
 <resources>
     <!-- Common -->
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">24dp</dimen>
+    <dimen name="activity_horizontal_margin">24dp</dimen>
     <dimen name="element_spacing_large">12dp</dimen>
     <dimen name="element_spacing_normal">8dp</dimen>
     <dimen name="element_spacing_small">4dp</dimen>
@@ -10,7 +10,8 @@
     <dimen name="view_height_small">36dp</dimen>
     <dimen name="view_height_tiny">24dp</dimen>
     <dimen name="list_item_divider_height">1dp</dimen>
-    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="toolbar_height">112dp</dimen>
+    <dimen name="toolbar_title_textsize">36sp</dimen>
 
     <!-- TODO: PageParams -->
     <!-- Common Page -->
@@ -31,8 +32,15 @@
     <dimen name="play_drawing_color_stroke_width">4dp</dimen>
     <dimen name="play_drawing_color_select_padding">5dp</dimen>
     <!-- Confilm Page -->
-    <dimen name="confilm_imageview_horizontal_margin">24dp</dimen>
     <dimen name="confilm_imageview_vertical_margin">18dp</dimen>
+    <dimen name="confilm_textview_vertical_margin">36dp</dimen>
+    <dimen name="confilm_button_vertical_margin">24dp</dimen>
+
+    <!-- Comment -->
+    <dimen name="comment_image_stroke">6dp</dimen>
+    <!-- CommnetAnswer -->
+    <dimen name="headline_textview_size">30sp</dimen>
+    <dimen name="comment_textview_vertical_margin">48dp</dimen>
 
     <!-- TODO: /PageParams -->
 
@@ -50,10 +58,19 @@
     <dimen name="button_round_stroke_width">6dp</dimen>
     <dimen name="button_round_stroke_width_pressed">4dp</dimen>
     <dimen name="button_round_minsize">120dp</dimen>
+    <!-- Large -->
+    <dimen name="button_large_horizontal_padding">16dp</dimen>
+    <dimen name="button_large_vertical_padding">16dp</dimen>
+    <dimen name="button_large_height">64dp</dimen>
+    <dimen name="button_large_text_size">30sp</dimen>
+    <dimen name="button_small_height">36dp</dimen>
+    <dimen name="button_small_text_size">24sp</dimen>
+    <dimen name="button_squeare_height">96dp</dimen>
+    <dimen name="button_squeare_text_size">20sp</dimen>
     <!-- TODO: /Button -->
 
     <!-- EditText -->
-    <dimen name="eidttext_inset">4dp</dimen>
+    <dimen name="edittext_corner">4dp</dimen>
 
     <!-- Dialog Content  -->
     <dimen name="dialog_content_horizontal_margin">8dp</dimen>

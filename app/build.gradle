@@ -7,9 +7,9 @@ android {
     buildToolsVersion '21.1.0'
 
     defaultConfig {
-        applicationId 'com.zeroone_creative.basicapplication'
+        applicationId 'com.hackm.langsketch'
         minSdkVersion 15
-        versionCode 1
+        versionCode 2
         versionName '1.0'
     }
     buildTypes {
@@ -26,18 +26,6 @@ android {
     }
     // 別のアプリを出す場合に使用
     // プロダクトフレーバー. それぞれのアプリのパッケージ名と使用する証明書を定義
-    productFlavors {
-        /*
-        hoge {
-            applicationId = 'com.zerocre.hoge'
-            signingConfig signingConfigs.hoge
-        }
-        fuga {
-            applicationId = 'com.zerocre.fuga'
-            signingConfig signingConfigs.fuga
-        }
-        */
-    }
     signingConfigs {
         /*
         hoge {
@@ -76,10 +64,10 @@ dependencies {
     compile 'com.android.support:support-v13:21.0.+'
     compile 'com.android.support:recyclerview-v7:21.0.+'
     compile 'com.android.support:cardview-v7:21.0.+'
-    // compile 'com.android.support:palette-v7:21.0.+'
+    //compile 'com.android.support:palette-v7:21.0.+'
 
     // Google Play Service
-    //compile 'com.google.android.gms:play-services:6.5.+'
+    compile 'com.google.android.gms:play-services:6.5.+'
 
     //Android annotation
     apt "org.androidannotations:androidannotations:$AAVersion"
@@ -94,13 +82,8 @@ dependencies {
     //Glide(Git and Animation loader)[https://github.com/bumptech/glide]
     //compile 'com.github.bumptech.glide:glide:3.4.+'
     //compile 'com.github.bumptech.glide:volley-integration:1.1.+'
-
-    // RxAndroid
-    compile 'io.reactivex:rxandroid:0.24.+'
-
     // Realm
     //compile 'io.realm:realm-android:0.71.+'
-
 }
 
 apt {

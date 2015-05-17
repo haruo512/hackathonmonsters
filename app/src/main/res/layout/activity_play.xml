@@ -26,7 +26,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/play_header_question_minheight"
                 android:layout_weight="1"
-                android:text="Large Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <ImageButton
@@ -55,8 +54,10 @@
         <!-- サイズは正方形にする -->
         <FrameLayout
             android:id="@+id/play_layout_drawing"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_comment_image">
 
             <view
                 android:id="@+id/play_stamp_drawingview"
@@ -132,12 +133,12 @@
                 android:src="@drawable/ic_eraser" />
 
             <ImageButton
-                android:id="@+id/play_imagebutton_width"
+                android:id="@+id/play_imagebutton_trash"
                 android:layout_width="@dimen/play_footer_icon_size"
                 android:layout_height="@dimen/play_footer_icon_size"
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/element_spacing_normal"
-                android:src="@drawable/ic_width" />
+                android:src="@drawable/ic_trash" />
 
             <Space
                 android:layout_width="match_parent"

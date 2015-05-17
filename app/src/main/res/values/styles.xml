@@ -103,6 +103,37 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/primary_text_inverse</item>
     </style>
-    s
+
+    <!-- Widget -->
+    <style name="Widget.Custom.Button.Large" parent="@style/Widget.AppCompat.Light.ActionButton">
+        <item name="@android:background">@drawable/bg_button_large</item>
+        <item name="@android:textAppearance">?attr/android:textAppearanceButton</item>
+        <item name="android:textSize">@dimen/button_large_text_size</item>
+        <item name="android:padding">@dimen/button_large_vertical_padding</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:minHeight">@dimen/button_large_height</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textColor">@color/primary_text_inverse</item>
+    </style>
+
+    <!-- Widget -->
+    <style name="Widget.Custom.Button.Small" parent="@style/Widget.AppCompat.Light.ActionButton">
+        <item name="@android:background">@drawable/bg_button_small</item>
+        <item name="@android:textAppearance">?attr/android:textAppearanceButton</item>
+        <item name="android:minHeight">@dimen/button_small_height</item>
+        <item name="android:textSize">@dimen/button_small_text_size</item>
+        <item name="android:textColor">@color/primary_text_inverse</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.Custom.Button.Square" parent="@style/Widget.AppCompat.Light.ActionButton">
+        <item name="@android:background">@drawable/bg_button_large</item>
+        <item name="@android:textAppearance">?attr/android:textAppearanceButton</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/button_squeare_text_size</item>
+        <item name="android:minHeight">@dimen/button_squeare_height</item>
+        <item name="android:textColor">@color/primary_text_inverse</item>
+    </style>
+
 
 </resources>

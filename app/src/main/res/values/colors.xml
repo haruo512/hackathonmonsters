@@ -21,10 +21,10 @@
     <color name="ghost_disable">#44b6b6b6</color>
 
     <!-- Text -->
-    <color name="primary_text">#de000000</color>
+    <color name="primary_text">#263238</color>
     <color name="primary_text_inverse">#ffffffff</color>
-    <color name="secondary_text">#7b7b7b</color>
-    <color name="secondary_text_inverse">#b3ffffff</color>
+    <color name="secondary_text">#607d8b</color>
+    <color name="secondary_text_inverse">#cfd8dc</color>
     <color name="body_text">#60000000</color>
     <color name="body_text_disabled">#44000000</color>
 

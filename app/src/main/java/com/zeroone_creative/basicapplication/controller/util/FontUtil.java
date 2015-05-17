@@ -64,7 +64,6 @@ public class FontUtil {
             ZipEntry ze = zis.getNextEntry();
             if (ze != null) {
                 zipFile = new File(context.getFilesDir(), ze.getName());
-
                 //フォントがすでに解凍されていればなにもしない
                 if (zipFile.exists()) {
                     return Typeface.createFromFile(zipFile.getPath());

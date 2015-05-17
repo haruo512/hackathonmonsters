@@ -7,6 +7,7 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.zeroone_creative.basicapplication.controller.util.FontUtil;
 import com.zeroone_creative.basicapplication.model.parseobject.CommentParseObject;
 import com.zeroone_creative.basicapplication.model.parseobject.ImageParseObject;
 import com.zeroone_creative.basicapplication.model.parseobject.PartsParseObject;
@@ -22,6 +23,7 @@ public class LangagExpressApplication extends Application implements LogInCallba
     @Override
     public void onCreate() {
         super.onCreate();
+        FontUtil.getFont("font/A-OTF-UDShinMGoPro-Bold.otf.zip", getApplicationContext());
         //Parseの初期化
         Parse.initialize(this, AppConfig.APPLICATION_ID, AppConfig.CLIENT_KEY);
         UserAccount account = new UserAccount(getApplicationContext());

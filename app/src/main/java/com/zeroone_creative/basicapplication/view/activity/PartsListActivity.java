@@ -28,15 +28,13 @@ import org.androidannotations.annotations.ViewById;
 import java.util.List;
 
 @EActivity(R.layout.activity_parts_list)
-public class PartsListActivity extends ActionBarActivity {
+public class PartsListActivity extends BaseToolbarActicvity {
 
     @Extra("tag_name")
     String tagName = "";
 
     @ViewById(R.id.parts_list_textview_notfound)
     TextView mNotfoundTextView;
-    @ViewById(R.id.header_toolbar)
-    Toolbar mToolbar;
     @ViewById(R.id.parts_list_gridview)
     GridView mGridView;
 
@@ -48,7 +46,8 @@ public class PartsListActivity extends ActionBarActivity {
             setResult(RESULT_CANCELED);
             finish();
         }
-        mToolbar.setTitle(R.string.title_activity_parts_list);
+
+        setToolbarTitle(R.string.title_activity_parts_list);
         mToolbar.setNavigationIcon(R.drawable.ic_ab_close);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +56,7 @@ public class PartsListActivity extends ActionBarActivity {
                 finish();
             }
         });
+
         mPartsAdapter = new PartsAdapter(getApplicationContext());
         mGridView.setAdapter(mPartsAdapter);
         ParseQuery<PartsParseObject> query = ParseQuery.getQuery("Parts");

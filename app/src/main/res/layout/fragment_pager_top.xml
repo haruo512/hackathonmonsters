@@ -10,24 +10,20 @@
     tools:context="com.zeroone_creative.basicapplication.view.activity.TopActivity$PlaceholderFragment">
 
 
-    <TextView
-        android:id="@+id/top_textview_language"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/primary_text_inverse"
-        android:textSize="@dimen/top_textview_textsize" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <ImageView
         android:id="@+id/top_imageview_lastpost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/element_spacing_normal"
-        android:layout_weight="1"
-        android:adjustViewBounds="false"
-        android:scaleType="fitCenter" />
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/img_main_topimg_english"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/top_button_start"
@@ -35,7 +31,9 @@
         android:layout_height="@dimen/top_button_height"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/pager_textview_label"
-        android:text="@string/top_button_start" />
+        android:text="@string/top_button_start"
+        style="@style/Widget.Custom.Button.Large"
+        android:layout_marginTop="@dimen/element_spacing_normal" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,20 +41,30 @@
         android:layout_marginTop="@dimen/element_spacing_normal"
         android:orientation="horizontal">
 
-
         <Button
             android:id="@+id/top_button_gallery"
             android:layout_width="0dp"
-            android:layout_height="@dimen/top_button_height"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/top_button_gallery" />
+            android:text="@string/top_button_gallery"
+            style="@style/Widget.Custom.Button.Square" />
+
+        <Space
+            android:layout_width="@dimen/element_spacing_normal"
+            android:layout_height="match_parent" />
 
         <Button
             android:id="@+id/top_button_all"
             android:layout_width="0dp"
-            android:layout_height="@dimen/top_button_height"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/top_button_other" />
+            android:text="@string/top_button_other"
+            style="@style/Widget.Custom.Button.Square" />
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 </LinearLayout>

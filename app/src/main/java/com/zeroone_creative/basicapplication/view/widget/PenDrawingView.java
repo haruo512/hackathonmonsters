@@ -108,6 +108,7 @@ public class PenDrawingView extends ImageView {
 
     public void clearCanvas() {
         mCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+        setImageBitmap(mBitmap);
     }
 
     public void setPenColor(int color) {

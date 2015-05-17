@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.zeroone_creative.basicapplication.view.activity.CommentActivity">
+
+
+    <include
+        layout="@layout/header_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <ImageView
+            android:id="@+id/comment_imageview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/element_spacing_large"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:scaleType="fitCenter"
+            android:background="@drawable/bg_comment_image"
+            android:focusableInTouchMode="false"
+            android:src="@drawable/img_noimage"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin" />
+
+        <EditText
+            android:id="@+id/comment_edittext_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:hint="@string/comment_edittext_hint"
+            android:textColorHint="@color/secondary_text"
+            android:background="@drawable/bg_edittext"
+            android:lines="5"
+            android:linksClickable="false"
+            android:gravity="left|top"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:textColor="@color/primary_text" />
+
+        <Button
+            android:id="@+id/comment_button_ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/comment_button_ok"
+            android:layout_marginTop="@dimen/element_spacing_normal"
+            style="@style/Widget.Custom.Button.Small"
+            android:layout_marginBottom="@dimen/element_spacing_large" />
+    </LinearLayout>
+
+</LinearLayout>

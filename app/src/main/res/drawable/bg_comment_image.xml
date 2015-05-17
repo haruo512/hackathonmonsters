@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <stroke android:color="@color/primary" android:width="@dimen/comment_image_stroke"/>
+    <padding android:left="@dimen/comment_image_stroke" android:right="@dimen/comment_image_stroke" android:bottom="@dimen/comment_image_stroke" android:top="@dimen/comment_image_stroke"/>
+    <solid android:color="@android:color/white"/>
+</shape>
