@@ -1,0 +1,148 @@
+<view xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/play_swiperefreshlayout"
+    class="android.support.v4.widget.SwipeRefreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.zeroone_creative.basicapplication.view.activity.PlayActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/element_spacing_normal"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/element_spacing_normal">
+
+            <TextView
+                android:id="@+id/play_textview_question"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/play_header_question_minheight"
+                android:layout_weight="1"
+                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <ImageButton
+                android:id="@+id/play_button_speak"
+                android:layout_width="@dimen/play_header_icon_size"
+                android:layout_height="@dimen/play_header_icon_size"
+                android:src="@drawable/ic_speak"
+                style="@style/Widget.Custom.Button.Round" />
+
+            <ImageButton
+                android:id="@+id/play_button_finish"
+                android:layout_width="@dimen/play_header_icon_size"
+                android:layout_height="@dimen/play_header_icon_size"
+                android:src="@drawable/ic_finish"
+                style="@style/Widget.Custom.Button.Round"
+                android:layout_marginLeft="@dimen/element_spacing_normal" />
+
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- サイズは正方形にする -->
+        <FrameLayout
+            android:id="@+id/play_layout_drawing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <view
+                android:id="@+id/play_stamp_drawingview"
+                class="com.zeroone_creative.basicapplication.view.widget.StampDrawingView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <view
+                android:id="@+id/play_pen_drawingview"
+                class="com.zeroone_creative.basicapplication.view.widget.PenDrawingView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/play_layout_color_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/img_color_divider"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/element_spacing_normal"
+                android:paddingTop="@dimen/element_spacing_normal"
+                android:showDividers="beginning|middle|end">
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/play_footer_height"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/play_footer_background"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/play_imagebutton_move"
+                android:layout_width="@dimen/play_footer_icon_size"
+                android:layout_height="@dimen/play_footer_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_move" />
+
+            <ImageButton
+                android:id="@+id/play_imagebutton_pen"
+                android:layout_width="@dimen/play_footer_icon_size"
+                android:layout_height="@dimen/play_footer_icon_size"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/element_spacing_normal"
+                android:src="@drawable/ic_pen" />
+
+            <ImageButton
+                android:id="@+id/play_imagebutton_eraser"
+                android:layout_width="@dimen/play_footer_icon_size"
+                android:layout_height="@dimen/play_footer_icon_size"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/element_spacing_normal"
+                android:src="@drawable/ic_eraser" />
+
+            <ImageButton
+                android:id="@+id/play_imagebutton_width"
+                android:layout_width="@dimen/play_footer_icon_size"
+                android:layout_height="@dimen/play_footer_icon_size"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/element_spacing_normal"
+                android:src="@drawable/ic_width" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+</view>
