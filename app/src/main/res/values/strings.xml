@@ -3,11 +3,11 @@
     <!-- App Name-->
     <string name="app_name">LangSketch</string>
     <!-- Page Titles (title_(class name)_(page name))-->
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_login">ようこそ</string>
     <string name="title_activity_login_name">あなたの名前は？</string>
     <string name="title_activity_parts_list">ヒントを選択</string>
-    <string name="title_activity_other_answer">みんな答え</string>
-    <string name="title_activity_gallery_all">みんな描いた絵</string>
+    <string name="title_activity_other_answer">みんなの答え</string>
+    <string name="title_activity_gallery_all">みんなが描いた絵</string>
     <string name="title_activity_history">いままで描いた絵</string>
     <string name="title_activity_commnet">英語にしよう</string>
     <string name="title_activity_comment_answer">あなたの絵の回答</string>
@@ -25,6 +25,8 @@
     <string name="login_button_next">つぎへ</string>
     <string name="login_name_faild_dialog_title">何も入力されていません</string>
     <string name="login_name_faild_dialog_message">1文字以上入力してください!</string>
+    <string name="signup_faild_dialog_title">ユーザーの作成に失敗しました</string>
+    <string name="signup_faild_dialog_message">ユーザ名がすでに使われています</string>
     <!-- Top -->
     <string name="top_button_start">はじめる</string>
     <string name="top_button_gallery">これまでの絵</string>
@@ -52,8 +54,5 @@
     <!-- Dialog Fragment -->
     <string name="dialog_positive_button">OK</string>
     <string name="dialog_negative_button">キャンセル</string>
-
-    <string name="drawer_open">Open</string>
-    <string name="drawer_close">Close</string>
 
 </resources>

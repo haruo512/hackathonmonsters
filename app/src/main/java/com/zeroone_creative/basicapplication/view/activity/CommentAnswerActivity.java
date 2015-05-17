@@ -1,5 +1,6 @@
 package com.zeroone_creative.basicapplication.view.activity;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -68,7 +69,7 @@ public class CommentAnswerActivity extends ActionBarActivity {
 
     @Click(R.id.comment_button_ok)
     void clickOk() {
-
+        TopActivity_.intent(this).flags(Intent.FLAG_ACTIVITY_CLEAR_TOP).start();
     }
 
 

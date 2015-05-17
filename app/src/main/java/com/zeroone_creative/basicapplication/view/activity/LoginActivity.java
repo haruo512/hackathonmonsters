@@ -14,6 +14,7 @@ import com.zeroone_creative.basicapplication.model.enumerate.LoginPage;
 import com.zeroone_creative.basicapplication.model.system.UserAccount;
 import com.zeroone_creative.basicapplication.view.LoginFragmentCallbackListener;
 import com.zeroone_creative.basicapplication.view.fragment.LoginNameFragment_;
+import com.zeroone_creative.basicapplication.view.fragment.MessageDialogFragment;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -23,7 +24,7 @@ import org.androidannotations.annotations.ViewById;
 import java.text.ParseException;
 
 @EActivity(R.layout.activity_login)
-public class LoginActivity extends ActionBarActivity implements LoginFragmentCallbackListener, SignUpCallback, LogInCallback {
+public class LoginActivity extends BaseToolbarActicvity implements LoginFragmentCallbackListener, SignUpCallback, LogInCallback {
 
     @ViewById(R.id.login_swiperefreshlayout)
     SwipeRefreshLayout mProgressLayout;
@@ -40,6 +41,7 @@ public class LoginActivity extends ActionBarActivity implements LoginFragmentCal
 
     @AfterViews
     void onAfterViews() {
+        setToolbarTitle(R.string.title_activity_login_name);
         mProgressLayout.setEnabled(false);
         mProgressLayout.setRefreshing(false);
         FragmentManager fragmentManager = getFragmentManager();
@@ -66,8 +68,8 @@ public class LoginActivity extends ActionBarActivity implements LoginFragmentCal
                     ParseUser user = new ParseUser();
                     user.setUsername(data);
                     user.setPassword(data);
-                    user.setEmail("example@example.com");
                     user.signUpInBackground(this);
+
                 }
                 break;
             case Age:
@@ -98,7 +100,7 @@ public class LoginActivity extends ActionBarActivity implements LoginFragmentCal
             ParseUser user = ParseUser.getCurrentUser();
             if (user != null) {
                 new UserAccount(user.getObjectId(), user.getUsername(), user.getUsername()).saveUser(this);
-                PlayActivity_.intent(this).start();
+                TopActivity_.intent(this).start();
                 finish();
             } else {
                 ParseUser.logInInBackground(mNameData, mNameData, this);
@@ -107,7 +109,10 @@ public class LoginActivity extends ActionBarActivity implements LoginFragmentCal
             if (mProgressLayout.isRefreshing()) {
                 mProgressLayout.setRefreshing(false);
             }
-            Toast.makeText(getApplicationContext(), getString(R.string.login_failed), Toast.LENGTH_LONG).show();
+            MessageDialogFragment.newInstance(
+                    getString(R.string.signup_faild_dialog_title),
+                    getString(R.string.signup_faild_dialog_message))
+                    .show(getFragmentManager(), MessageDialogFragment.class.getSimpleName());
             e.printStackTrace();
         }
     }
