@@ -17,7 +17,7 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/element_spacing_normal"
         android:backgroundTint="@color/login_edittext_backgroundtint"
-        android:textColor="@color/primary_text_inverse"
+        android:textColor="@color/primary_text"
         android:background="@drawable/bg_edittext" />
 
     <Button

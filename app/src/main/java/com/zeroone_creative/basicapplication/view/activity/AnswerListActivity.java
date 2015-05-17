@@ -2,6 +2,7 @@ package com.zeroone_creative.basicapplication.view.activity;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ import org.androidannotations.annotations.ViewById;
 import java.util.List;
 
 @EActivity(R.layout.activity_answer_list)
-public class AnswerListActivity extends BaseToolbarActicvity {
+public class AnswerListActivity extends BaseToolbarActicvity implements AdapterView.OnItemClickListener {
 
     public static final int PAGE_SENTENCE = 1;
     public static final int PAGE_GALLERY = 2;
@@ -41,6 +42,7 @@ public class AnswerListActivity extends BaseToolbarActicvity {
     LinearLayout mQuestionLayout;
     @ViewById(R.id.other_answer_textview_question)
     TextView mQuestionTextView;
+
     private AnswerAdapter mAnswerAdapter;
 
     @AfterViews
@@ -88,6 +90,8 @@ public class AnswerListActivity extends BaseToolbarActicvity {
                 }
             }
         });
+
+        mGridView.setOnItemClickListener(this);
     }
 
     @Click(R.id.other_answer_button_ok)
@@ -97,4 +101,9 @@ public class AnswerListActivity extends BaseToolbarActicvity {
         startActivity(intent);
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        ImageParseObject imageParseObject = mAnswerAdapter.getItem(position);
+        CommentActivity_.intent(this).imageId(imageParseObject.getObjectId()).start();
+    }
 }

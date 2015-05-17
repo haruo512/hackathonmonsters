@@ -41,7 +41,8 @@
             android:lines="5"
             android:linksClickable="false"
             android:gravity="left|top"
-            android:layout_marginTop="@dimen/activity_vertical_margin" />
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:textColor="@color/primary_text" />
 
         <Button
             android:id="@+id/comment_button_ok"

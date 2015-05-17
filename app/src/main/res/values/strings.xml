@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App Name-->
-    <string name="app_name">BasicApplication</string>
+    <string name="app_name">LangSketch</string>
     <!-- Page Titles (title_(class name)_(page name))-->
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_login_name">あなたの名前は？</string>
@@ -10,8 +10,9 @@
     <string name="title_activity_gallery_all">みんな描いた絵</string>
     <string name="title_activity_history">いままで描いた絵</string>
     <string name="title_activity_commnet">英語にしよう</string>
-    <string name="title_activity_comment_answer">CommentAnswerActivity</string>
+    <string name="title_activity_comment_answer">あなたの絵の回答</string>
     <string name="title_activity_pager">PagerActivity</string>
+    <string name="title_activity_confilm">もう一度確認</string>
 
     <!-- PageParams -->
     <!-- Common -->
@@ -48,23 +49,11 @@
     <string name="comment_answer_textview_orizinal">元のぶんしょう</string>
     <string name="comment_answer_textview_answer">あなたの答え</string>
 
-
     <!-- Dialog Fragment -->
     <string name="dialog_positive_button">OK</string>
     <string name="dialog_negative_button">キャンセル</string>
 
-    <!-- Drawer Menu -->
-    <string name="menu_1">Menu1</string>
-    <string name="menu_2">Menu2</string>
-    <string name="menu_3">Menu3</string>
-
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
-    <string name="title_activity_confilm">ConfilmActivity</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
-
 
 </resources>
