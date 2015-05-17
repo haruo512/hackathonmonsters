@@ -11,9 +11,9 @@
 
     <ImageView
         android:id="@+id/comment_imageview"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center"
         android:layout_marginTop="@dimen/element_spacing_large"
         android:adjustViewBounds="true"
         android:background="@drawable/bg_comment_image"

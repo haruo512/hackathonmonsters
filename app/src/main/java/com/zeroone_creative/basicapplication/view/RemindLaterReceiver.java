@@ -47,6 +47,7 @@ public class RemindLaterReceiver extends BroadcastReceiver implements LogInCallb
 		if (e == null) {
 			ParseQuery<ImageParseObject> query = ParseQuery.getQuery("Image");
 			query.whereEqualTo("userId", parseUser.getObjectId());
+			query.whereEqualTo("objectId", "xskR6U6EJt");
 			query.findInBackground(new FindCallback<ImageParseObject>() {
 				public void done(List<ImageParseObject> imageList, ParseException e) {
 					if (e == null) {

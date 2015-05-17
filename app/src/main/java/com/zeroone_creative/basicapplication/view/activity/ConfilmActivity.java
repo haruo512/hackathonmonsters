@@ -108,8 +108,7 @@ public class ConfilmActivity extends ActionBarActivity implements SaveCallback {
         //呼び出す日時を設定する
         Calendar triggerTime = Calendar.getInstance();
         Random random = new Random();
-        triggerTime.add(Calendar.DATE, random.nextInt(3));
-        //triggerTime.add(Calendar.MINUTE, 1);
+        triggerTime.add(Calendar.DATE, random.nextInt(3) + 1);
         //設定した日時で発行するIntentを生成
         Intent intent = new Intent(this, RemindLaterReceiver.class);
         PendingIntent sender = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
