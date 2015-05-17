@@ -32,14 +32,10 @@ public class TopPagerFragment extends Fragment {
     @FragmentArg("langage_name")
     String mLangageName = "";
 
-    @ViewById(R.id.top_textview_language)
-    TextView mLangNameTextView;
-
     private List<SentenceParseObject> mSententceList = new ArrayList<>();
 
     @AfterViews
     public void onAfterViews() {
-        mLangNameTextView.setText(mLangageName);
         ParseQuery<SentenceParseObject> query = ParseQuery.getQuery("Sentence");
         query.whereContains("lang", mLangageCode);
         //TODO　変えるかも

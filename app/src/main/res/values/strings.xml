@@ -3,11 +3,15 @@
     <!-- App Name-->
     <string name="app_name">BasicApplication</string>
     <!-- Page Titles (title_(class name)_(page name))-->
-    <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_pager">PagerActivity</string>
-    <string name="title_activity_draw">DrawActivity</string>
+    <string name="title_activity_login_name">あなたの名前は？</string>
     <string name="title_activity_parts_list">ヒントを選択</string>
+    <string name="title_activity_other_answer">みんな答え</string>
+    <string name="title_activity_gallery_all">みんな描いた絵</string>
+    <string name="title_activity_history">いままで描いた絵</string>
+    <string name="title_activity_commnet">英語にしよう</string>
+    <string name="title_activity_comment_answer">CommentAnswerActivity</string>
+    <string name="title_activity_pager">PagerActivity</string>
 
     <!-- PageParams -->
     <!-- Common -->
@@ -34,13 +38,16 @@
     <string name="confilm_button_send">かいとうする</string>
     <!-- Other Answer -->
     <string name="other_answer_button_top">トップへ</string>
+    <string name="other_answer_textview_question">テーマ文章</string>
     <!-- PartsList -->
     <string name="parts_list_textview_notfound">ヒントが見つかりませんでした</string>
+    <!-- Comment -->
+    <string name="comment_button_ok">OK</string>
+    <string name="comment_edittext_hint">タップして入力してください</string>
+    <!-- Comment Answer -->
+    <string name="comment_answer_textview_orizinal">元のぶんしょう</string>
+    <string name="comment_answer_textview_answer">あなたの答え</string>
 
-    <!-- Recycler -->
-    <string name="action_change_recycler">Recycler</string>
-    <string name="action_change_horizontal_card">HorizontalCard</string>
-    <string name="action_change_vertical">Vertical</string>
 
     <!-- Dialog Fragment -->
     <string name="dialog_positive_button">OK</string>
@@ -57,7 +64,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_other_answer">OtherAnswerActivity</string>
+
 
 
 </resources>

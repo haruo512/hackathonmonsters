@@ -35,6 +35,14 @@
             android:name=".view.activity.PartsListActivity_"
             android:label="@string/title_activity_parts_list" >
         </activity>
+        <activity
+            android:name=".view.activity.CommentActivity_"
+            android:label="@string/title_activity_commnet" >
+        </activity>
+        <activity
+            android:name=".view.activity.CommentAnswerActivity_"
+            android:label="@string/title_activity_comment_answer" >
+        </activity>
     </application>
 
 </manifest>

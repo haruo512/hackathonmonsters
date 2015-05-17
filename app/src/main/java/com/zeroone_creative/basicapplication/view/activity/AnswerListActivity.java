@@ -1,20 +1,19 @@
 package com.zeroone_creative.basicapplication.view.activity;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
 import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.zeroone_creative.basicapplication.R;
 import com.zeroone_creative.basicapplication.model.parseobject.ImageParseObject;
+import com.zeroone_creative.basicapplication.model.parseobject.SentenceParseObject;
 import com.zeroone_creative.basicapplication.view.adapter.AnswerAdapter;
 
 import org.androidannotations.annotations.AfterViews;
@@ -23,11 +22,10 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @EActivity(R.layout.activity_answer_list)
-public class AnswerListActivity extends ActionBarActivity {
+public class AnswerListActivity extends BaseToolbarActicvity {
 
     public static final int PAGE_SENTENCE = 1;
     public static final int PAGE_GALLERY = 2;
@@ -39,6 +37,10 @@ public class AnswerListActivity extends ActionBarActivity {
     String sentenceId = "";
     @ViewById(R.id.other_answer_gridview)
     GridView mGridView;
+    @ViewById(R.id.other_answer_layout_question)
+    LinearLayout mQuestionLayout;
+    @ViewById(R.id.other_answer_textview_question)
+    TextView mQuestionTextView;
     private AnswerAdapter mAnswerAdapter;
 
     @AfterViews
@@ -48,15 +50,31 @@ public class AnswerListActivity extends ActionBarActivity {
         ParseQuery<ImageParseObject> query = ParseQuery.getQuery("Image");
         switch (pageType) {
             case PAGE_SENTENCE:
+                mQuestionLayout.setVisibility(View.VISIBLE);
                 query.whereEqualTo("sentenceId", sentenceId);
-                query.setLimit(30);
+                query.setLimit(6);
+                setToolbarTitle(R.string.title_activity_other_answer);
+                ParseQuery<SentenceParseObject> sentenceQuery = ParseQuery.getQuery("Sentence");
+                sentenceQuery.getInBackground(sentenceId, new GetCallback<SentenceParseObject>() {
+                    public void done(SentenceParseObject object, ParseException e) {
+                        if (e == null) {
+                            mQuestionTextView.setText(object.getBody());
+                        } else {
+                            e.printStackTrace();
+                        }
+                    }
+                });
                 break;
             case PAGE_GALLERY:
+                mQuestionLayout.setVisibility(View.GONE);
                 ParseUser parseUser = ParseUser.getCurrentUser();
                 query.whereEqualTo("userId", parseUser.getObjectId());
+                setToolbarTitle(R.string.title_activity_history);
                 break;
             case PAGE_ALL:
-                query.setLimit(30);
+                mQuestionLayout.setVisibility(View.GONE);
+                query.setLimit(6);
+                setToolbarTitle(R.string.title_activity_gallery_all);
                 break;
             default:
                 break;
@@ -72,7 +90,7 @@ public class AnswerListActivity extends ActionBarActivity {
         });
     }
 
-    @Click(R.id.other_answer_button_send)
+    @Click(R.id.other_answer_button_ok)
     void clickSend() {
         Intent intent = TopActivity_.intent(this).get();
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

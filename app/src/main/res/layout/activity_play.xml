@@ -26,7 +26,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/play_header_question_minheight"
                 android:layout_weight="1"
-                android:text="Large Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <ImageButton
