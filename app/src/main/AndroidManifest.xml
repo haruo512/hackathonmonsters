@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="ANDROID.PERMISSION.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:name=".LangagExpressApplication"
@@ -44,6 +45,9 @@
             android:name=".view.activity.CommentAnswerActivity_"
             android:label="@string/title_activity_comment_answer" >
         </activity>
+        <receiver android:name=".view.RemindLaterReceiver"></receiver>
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

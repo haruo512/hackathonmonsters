@@ -51,6 +51,10 @@
     <string name="comment_answer_textview_orizinal">元のぶんしょう</string>
     <string name="comment_answer_textview_answer">あなたの答え</string>
 
+    <!-- RemindLater -->
+    <string name="remind_later_title">これなに？</string>
+    <string name="remind_later_message">この写真を英語で説明して</string>
+
     <!-- Dialog Fragment -->
     <string name="dialog_positive_button">OK</string>
     <string name="dialog_negative_button">キャンセル</string>
